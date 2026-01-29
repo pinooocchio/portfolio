@@ -22,17 +22,20 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+
+  /* ✅ FIX */
+  overflow-x: hidden;
 }
 
 /* ---------- SUBTLE STAR DUST ---------- */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed; /* important */
   inset: 0;
   background-image: radial-gradient(#ffffff14 1px, transparent 1px);
   background-size: 80px 80px;
   opacity: 0.4;
+  pointer-events: none;
 }
 
 /* ---------- LAYOUT ---------- */
@@ -42,6 +45,7 @@ body::before {
   text-align: center;
   position: relative;
   z-index: 1;
+  padding: 3rem 0; /* ensures space top & bottom */
 }
 
 /* ---------- PROFILE ---------- */
@@ -150,10 +154,8 @@ body::before {
 .link::before {
   content: "";
   position: absolute;
-  top: 0;
+  inset: 0;
   left: -120%;
-  width: 120%;
-  height: 100%;
   background: linear-gradient(
     120deg,
     transparent,
@@ -192,21 +194,12 @@ body::before {
 
 /* ---------- ANIMATIONS ---------- */
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideIn {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+  to { opacity: 1; transform: translateX(0); }
 }
 
 /* ---------- MOBILE TEXT ---------- */
@@ -214,19 +207,6 @@ body::before {
   .name {
     font-size: 26px;
     letter-spacing: 6px;
-  }
-}
-
-/* ---------- MOBILE FIX (IMPORTANT) ---------- */
-@media (max-height: 700px) {
-  body {
-    align-items: flex-start;
-    overflow-y: auto;
-  }
-
-  .wrapper {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
   }
 }
 </style>
@@ -248,31 +228,26 @@ body::before {
       <span class="label">GitHub</span>
       <span class="arrow">↗</span>
     </a>
-
     <a class="link" href="https://www.linkedin.com/in/owarashad-iqbal-709b473a1" target="_blank">
       <span class="index">Ⅱ</span>
       <span class="label">LinkedIn</span>
       <span class="arrow">↗</span>
     </a>
-
     <a class="link" href="https://discord.com/users/pinocchio.sad" target="_blank">
       <span class="index">Ⅲ</span>
       <span class="label">Discord</span>
       <span class="arrow">↗</span>
     </a>
-
     <a class="link" href="mailto:zadid2011@gmail.com">
       <span class="index">Ⅳ</span>
       <span class="label">Email</span>
       <span class="arrow">↗</span>
     </a>
-
     <a class="link" href="https://monkeytype.com/profile/pinocchio12" target="_blank">
       <span class="index">Ⅴ</span>
       <span class="label">Monkeytype</span>
       <span class="arrow">↗</span>
     </a>
-
     <a class="link" href="https://codeforces.com/profile/Pinocchioo" target="_blank">
       <span class="index">Ⅵ</span>
       <span class="label">Codeforces</span>
