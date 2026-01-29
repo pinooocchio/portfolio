@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owarashad Iqbal Zadid</title>
+
+<style>
+/* ---------- RESET ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ---------- BASE ---------- */
+body {
+  min-height: 100vh;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(circle at center, #0b0b0b 0%, #000 70%);
+  color: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* ---------- SUBTLE STAR DUST ---------- */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#ffffff14 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.4;
+}
+
+/* ---------- LAYOUT ---------- */
+.wrapper {
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ---------- PROFILE ---------- */
+.avatar {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 28px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid #ffffff22;
+
+  /* animation */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------- NAME ---------- */
+.name {
+  font-size: 32px;
+  font-weight: 300;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+
+  /* animation */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.15s;
+}
+
+/* ---------- BIO ---------- */
+.bio {
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  color: #bbbbbb;
+  margin-bottom: 48px;
+
+  /* animation */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 0.3s;
+}
+
+/* ---------- LIST ---------- */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- ITEM ---------- */
+.link {
+  position: relative;
+  padding: 18px 22px;
+  border: 1px solid #ffffff18;
+  background: rgba(255,255,255,0.02);
+  text-decoration: none;
+  color: #e5e5e5;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  overflow: hidden;
+
+  /* animation */
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideIn 0.6s ease forwards;
+
+  /* hover smoothing only */
+  transition: background 0.4s ease, border 0.4s ease;
+}
+
+/* staggered reveal */
+.link:nth-child(1){ animation-delay: 0.45s; }
+.link:nth-child(2){ animation-delay: 0.55s; }
+.link:nth-child(3){ animation-delay: 0.65s; }
+.link:nth-child(4){ animation-delay: 0.75s; }
+.link:nth-child(5){ animation-delay: 0.85s; }
+.link:nth-child(6){ animation-delay: 0.95s; }
+
+/* roman number */
+.link span.index {
+  width: 30px;
+  font-size: 13px;
+  color: #777;
+  letter-spacing: 2px;
+}
+
+/* label */
+.link span.label {
+  flex: 1;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+/* arrow */
+.link span.arrow {
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: all 0.4s ease;
+  color: #999;
+}
+
+/* light sweep */
+.link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.08),
+    transparent
+  );
+  transition: left 0.8s ease;
+}
+
+/* hover */
+.link:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: #ffffff30;
+}
+
+.link:hover::before {
+  left: 120%;
+}
+
+.link:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  margin-top: 60px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #666;
+
+  /* animation */
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1.1s;
+}
+
+/* ---------- ANIMATIONS ---------- */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width: 520px) {
+  .name {
+    font-size: 26px;
+    letter-spacing: 6px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="wrapper">
+
+  <!-- PROFILE -->
+  <div class="avatar">
+    <img src="assets/pfp.png" alt="profile">
+  </div>
+
+  <div class="name">PINOCCHIO</div>
+  <div class="bio">CSE Student • Competitive Programmer • Web Enthusiast</div>
+
+  <!-- LINKS -->
+  <div class="links">
+    <a class="link" href="https://github.com/pinooocchio" target="_blank">
+      <span class="index">Ⅰ</span>
+      <span class="label">GitHub</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link" href="https://www.linkedin.com/in/owarashad-iqbal-709b473a1" target="_blank">
+      <span class="index">Ⅱ</span>
+      <span class="label">LinkedIn</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link" href="https://discord.com/users/pinocchio.sad" target="_blank">
+      <span class="index">Ⅲ</span>
+      <span class="label">Discord</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link" href="mailto:zadid2011@gmail.com">
+      <span class="index">Ⅳ</span>
+      <span class="label">Email</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link" href="https://monkeytype.com/profile/pinocchio12" target="_blank">
+      <span class="index">Ⅴ</span>
+      <span class="label">Monkeytype</span>
+      <span class="arrow">↗</span>
+    </a>
+
+    <a class="link" href="https://codeforces.com/profile/Pinocchioo" target="_blank">
+      <span class="index">Ⅵ</span>
+      <span class="label">Codeforces</span>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+
+  <div class="footer">2026 — between curiosity and discipline</div>
+
+</div>
+</body>
+</html>
